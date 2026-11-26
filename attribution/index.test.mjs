@@ -9,7 +9,7 @@ import { test } from 'node:test'
 const action = fileURLToPath(new URL('./index.mjs', import.meta.url))
 
 test('fails a pull request that credits an AI tool, and passes one that does not', (t) => {
-  const cwd = mkdtempSync(join(tmpdir(), 'no-ai-credit-'))
+  const cwd = mkdtempSync(join(tmpdir(), 'attribution-'))
   t.after(() => rmSync(cwd, { recursive: true, force: true }))
   const env = { ...process.env, GIT_AUTHOR_NAME: 'Test Owner', GIT_AUTHOR_EMAIL: 'owner@example.com',
     GIT_COMMITTER_NAME: 'Test Owner', GIT_COMMITTER_EMAIL: 'owner@example.com' }

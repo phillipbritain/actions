@@ -2,13 +2,13 @@
 
 Shared GitHub Actions for my repositories.
 
-## no-ai-credit
+## attribution
 
-Fails a pull request whose commits, title or description credit an AI coding tool: a commit authored or committed as one, or a `Co-Authored-By` trailer naming one. Mentions of a tool elsewhere, and human co-authors, pass. The tools it knows are listed in [`no-ai-credit/index.mjs`](no-ai-credit/index.mjs).
+Fails a pull request whose commits, title or description credit an AI coding tool: a commit authored or committed as one, or a `Co-Authored-By` trailer naming one. Mentions of a tool elsewhere, and human co-authors, pass. The tools it knows are listed in [`attribution/index.mjs`](attribution/index.mjs).
 
 ```yaml
-# .github/workflows/no-ai-credit.yml
-name: no-ai-credit
+# .github/workflows/pr-policy.yml
+name: pr-policy
 
 on:
   pull_request:
@@ -19,17 +19,20 @@ permissions:
   contents: read
 
 jobs:
-  no-ai-credit:
+  attribution:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: phillipbritain/actions/no-ai-credit@v1
+      - uses: phillipbritain/actions/attribution@v2
 ```
 
-`edited` reruns it when the title or description changes. Make `no-ai-credit` a required check in the branch's ruleset.
+`edited` reruns it when the title or description changes. Make `attribution` a required check in the branch's ruleset.
 
 ## Releases
 
-Each release is tagged `vX.Y.Z`, and the major tag (`v1`) moves to the latest release of that major version.
+Each release is tagged `vX.Y.Z`, and its major tag (`v2`) moves to the latest release of that major version.
+
+- **v2**: `no-ai-credit` renamed `attribution`.
+- **v1**: `no-ai-credit`.
