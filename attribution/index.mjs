@@ -16,7 +16,7 @@ const creditsAiTool = (text) => (text.match(/^\s*co-authored-by:.*$/gim) ?? []).
 const event = process.env.GITHUB_EVENT_PATH ? JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')) : {}
 const pr = event.pull_request
 if (!pr) {
-  console.log('::error::no-ai-credit runs on pull_request events only.')
+  console.log('::error::attribution runs on pull_request events only.')
   process.exit(1)
 }
 
