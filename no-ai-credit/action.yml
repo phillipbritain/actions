@@ -1,0 +1,5 @@
+name: No AI credit
+description: Fails a pull request whose commits, title or description credit an AI coding tool as author, committer or co-author.
+runs:
+  using: node24
+  main: index.mjs
